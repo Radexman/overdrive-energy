@@ -1,5 +1,11 @@
-import Test from '@/components/Test';
+'use client';
+
+import Hero from '@/components/Hero/Hero';
 
 export default function Home() {
-  return <Test />;
+  return (
+    <>
+      <Hero />
+    </>
+  );
 }
