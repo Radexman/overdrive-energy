@@ -28,7 +28,7 @@ const Hero = () => {
         ease: 'power4.in',
         delay: 0.3,
       })
-      .from('.hero-tagline', { opacity: 0, y: 20 }, '+=0.2')
+      .from('.hero-tagline', { opacity: 0, y: 20, delay: 0.5 })
       .from('.hero-heading', { opacity: 0, y: 10 })
       .from('.hero-subheading', { opacity: 0, y: 10 });
   }, []);

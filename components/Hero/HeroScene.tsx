@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/all';
+import { useControls } from 'leva';
 
 import Can from '../Can';
 
@@ -26,19 +27,17 @@ const HeroScene = () => {
     gsap.set(canTwoRef.current.rotation, { z: 0.3 });
 
     gsap
-      .timeline({ defaults: { duration: 2, ease: 'back.out(1.4)' } })
-      .to(canOneRef.current.position, { x: -4 })
-      .to(canTwoRef.current.position, { x: 4 }, '<');
+      .timeline({ defaults: { duration: 2, ease: 'back.out(1.5)' } })
+      .to(canOneRef.current.position, { x: -4, delay: 1.5 })
+      .to(canOneRef.current.rotation, { z: -0.5 }, '<')
+      .to(canTwoRef.current.position, { x: 4 }, '<')
+      .to(canTwoRef.current.rotation, { z: 0.5 }, '<');
   }, []);
 
   return (
     <group>
-      <group ref={canOneRef} position-x={-4}>
-        <Can textureName="lemon-lime" />
-      </group>
-      <group ref={canTwoRef} position-x={4}>
-        <Can textureName="orange-burst" />
-      </group>
+      <Can ref={canOneRef} textureName="orange-burst" />
+      <Can ref={canTwoRef} textureName="lemon-lime" />
     </group>
   );
 };
