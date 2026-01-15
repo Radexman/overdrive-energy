@@ -17,10 +17,15 @@ const HeroScene = () => {
   useGSAP(() => {
     if (!canOneRef.current || !canTwoRef.current) return;
 
-    gsap.set(canOneRef.current.position, { x: -10 });
-    gsap.set(canTwoRef.current.position, { x: 10 });
+    // Can One
+    gsap.set(canOneRef.current.position, { x: -11 });
+    gsap.set(canOneRef.current.rotation, { z: -0.3 });
 
-    const introTl = gsap
+    // Can Two
+    gsap.set(canTwoRef.current.position, { x: 11 });
+    gsap.set(canTwoRef.current.rotation, { z: 0.3 });
+
+    gsap
       .timeline({ defaults: { duration: 2, ease: 'back.out(1.4)' } })
       .to(canOneRef.current.position, { x: -4 })
       .to(canTwoRef.current.position, { x: 4 }, '<');

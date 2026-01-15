@@ -5,6 +5,7 @@ import { useGSAP } from '@gsap/react';
 import { Environment, View } from '@react-three/drei';
 
 import HeroScene from './HeroScene';
+import TextSplitter from '../TextSplitter';
 
 gsap.registerPlugin(useGSAP);
 
@@ -14,9 +15,22 @@ const Hero = () => {
 
     introTl
       .set('.hero', { opacity: 1 })
-      .from('.hero-heading', { scale: 2, opacity: 0, ease: 'power4.in', delay: 0.3 })
-      .from('.hero-subheading', { opacity: 0, y: 20 }, '+=0.3')
-      .from('.hero-tagline', { opacity: 0, y: 20 });
+      .from('.hero-header-word', {
+        scale: 2,
+        opacity: 0,
+        ease: 'power4.in',
+        delay: 0.3,
+        stagger: 1,
+      })
+      .from('.last-word', {
+        scale: 2,
+        opacity: 0,
+        ease: 'power4.in',
+        delay: 0.3,
+      })
+      .from('.hero-tagline', { opacity: 0, y: 20 }, '+=0.2')
+      .from('.hero-heading', { opacity: 0, y: 10 })
+      .from('.hero-subheading', { opacity: 0, y: 10 });
   }, []);
 
   return (
@@ -27,9 +41,19 @@ const Hero = () => {
         <ambientLight intensity={0.5} />
       </View>
       <div className="hero font-bebas-neue absolute inset-0 flex flex-col items-center justify-center text-white opacity-0">
-        <h1 className="hero-heading mb-6 text-9xl font-bold tracking-wider">OVERDRIVE</h1>
-        <h2 className="hero-subheading text-5xl font-semibold tracking-wide">ENERGY DRINK</h2>
-        <p className="hero-tagline text-3xl font-medium text-yellow-400">Push Beyond Limits</p>
+        <header className="absolute top-18 flex flex-col items-center justify-center tracking-wider">
+          <p className="text-brand hero-heading text-6xl">Overdrive</p>
+          <p className="hero-subheading text-2xl">Energy Drink</p>
+        </header>
+        <h1 className="text-brand text-center text-[150px] font-bold tracking-wider">
+          <TextSplitter
+            text="Push Beyond"
+            wordDisplayStyle="inline-block"
+            className="hero-header-word"
+          />
+          <span className="last-word -mt-14 block">Limits</span>
+        </h1>
+        <p className="hero-tagline text-3xl">Engineered for focus and performance</p>
       </div>
     </div>
   );

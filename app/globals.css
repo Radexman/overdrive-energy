@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 :root {
-  --background: #5806b7ef;
+  --background: #0b0d10;
 }
 
 body {
@@ -13,6 +13,17 @@ body {
 }
 
 @theme {
+  /* Typography */
   --font-bebas-neue: 'Bebas Neue', sans-serif;
   --font-merriweather-sans: 'Merriweather Sans', sans-serif;
+  /* Colors */
+  --color-brand: #ffb000;
+  --color-brand-accent: #ffcc33;
+  --color-background: #0b0d10;
+  --color-text-primary: #ffffff;
+  --color-text-muted: #b6bccb;
+  --color-divider: #242a38;
+  --color-orange-burst: #ae4512;
+  --color-berry-frost: #052a3a;
+  --color-lemon-lime: #019707;
 }
