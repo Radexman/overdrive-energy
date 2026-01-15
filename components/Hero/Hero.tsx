@@ -6,6 +6,7 @@ import { Environment, View } from '@react-three/drei';
 
 import HeroScene from './HeroScene';
 import Bounded from '../Bounded';
+import About from '../About/About';
 import TextSplitter from '../TextSplitter';
 
 gsap.registerPlugin(useGSAP);
@@ -41,8 +42,8 @@ const Hero = () => {
         <Environment preset="studio" />
         <ambientLight intensity={0.5} />
       </View>
-      <div className="font-bebas-neue absolute inset-0 -mt-28 flex flex-col items-center justify-center text-white">
-        <header className="flex flex-col items-center justify-center tracking-wider">
+      <div className="font-bebas-neue text-text-primary absolute inset-0 flex flex-col items-center justify-center">
+        <header className="absolute top-24 flex flex-col items-center justify-center tracking-wider">
           <p className="text-brand hero-heading text-6xl">Overdrive</p>
           <p className="hero-subheading text-2xl">Energy Drink</p>
         </header>
@@ -56,7 +57,7 @@ const Hero = () => {
         </h1>
         <p className="hero-tagline text-3xl">Engineered for focus and performance</p>
       </div>
-      <div className="min-h-screen"></div>
+      <About />
     </Bounded>
   );
 };

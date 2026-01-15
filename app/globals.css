@@ -6,6 +6,7 @@
 
 body {
   background: var(--background);
+  overflow-x: hidden;
 }
 
 @utility hover-animation {
