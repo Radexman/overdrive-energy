@@ -5,6 +5,7 @@ import { useGSAP } from '@gsap/react';
 import { Environment, View } from '@react-three/drei';
 
 import HeroScene from './HeroScene';
+import Bounded from '../Bounded';
 import TextSplitter from '../TextSplitter';
 
 gsap.registerPlugin(useGSAP);
@@ -34,14 +35,14 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="h-screen w-full">
-      <View className="w-dhw h-dvh">
+    <Bounded className="hero opacity-0">
+      <View className="pointer-events-none sticky top-0 z-50 hidden h-screen w-screen md:block">
         <HeroScene />
         <Environment preset="studio" />
         <ambientLight intensity={0.5} />
       </View>
-      <div className="hero font-bebas-neue absolute inset-0 flex flex-col items-center justify-center text-white opacity-0">
-        <header className="absolute top-18 flex flex-col items-center justify-center tracking-wider">
+      <div className="font-bebas-neue absolute inset-0 -mt-28 flex flex-col items-center justify-center text-white">
+        <header className="flex flex-col items-center justify-center tracking-wider">
           <p className="text-brand hero-heading text-6xl">Overdrive</p>
           <p className="hero-subheading text-2xl">Energy Drink</p>
         </header>
@@ -51,11 +52,12 @@ const Hero = () => {
             wordDisplayStyle="inline-block"
             className="hero-header-word"
           />
-          <span className="last-word -mt-14 block">Limits</span>
+          <span className="last-word block">Limits</span>
         </h1>
         <p className="hero-tagline text-3xl">Engineered for focus and performance</p>
       </div>
-    </div>
+      <div className="min-h-screen"></div>
+    </Bounded>
   );
 };
 
