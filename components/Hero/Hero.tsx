@@ -6,7 +6,7 @@ import { Environment, View } from '@react-three/drei';
 
 import HeroScene from './HeroScene';
 import Bounded from '../Bounded';
-import About from '../About/About';
+import About from './About';
 import TextSplitter from '../TextSplitter';
 
 gsap.registerPlugin(useGSAP);

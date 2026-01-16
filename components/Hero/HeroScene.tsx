@@ -21,13 +21,13 @@ const HeroScene = () => {
     if (!groupRef.current || !canOneRef.current || !canTwoRef.current || !canThreeRef.current)
       return;
 
-    gsap.set(canOneRef.current.position, { x: -11, y: 0 });
+    gsap.set(canOneRef.current.position, { x: -12, y: 0 });
     gsap.set(canOneRef.current.rotation, { z: -0.3 });
 
-    gsap.set(canTwoRef.current.position, { x: 11, y: 0 });
+    gsap.set(canTwoRef.current.position, { x: 12, y: 0 });
     gsap.set(canTwoRef.current.rotation, { z: 0.3 });
 
-    gsap.set(canThreeRef.current.position, { x: -11, y: 2 });
+    gsap.set(canThreeRef.current.position, { x: -13, y: 2 });
     gsap.set(canThreeRef.current.rotation, { z: -Math.PI * 0.5 });
 
     gsap
@@ -44,19 +44,17 @@ const HeroScene = () => {
           start: 'top top',
           end: 'bottom top',
           scrub: 2,
-          markers: true,
         },
       })
       .to(groupRef.current.rotation, { y: Math.PI * 2 })
       .to(groupRef.current.position, { y: -2.9 }, 0)
 
       .to(canThreeRef.current.position, { x: -1 }, 0)
-      .to(canThreeRef.current.rotation, { x: Math.PI * 2.4 }, 0)
+      .to(canThreeRef.current.rotation, { x: Math.PI * 2 }, 0)
 
       .to(canOneRef.current.rotation, { x: Math.PI * 2.5 }, 0.2)
-      .to(canThreeRef.current.rotation, { x: Math.PI * 0.5 }, 0.4)
       .to(canTwoRef.current.position, { y: '+=2' }, 0.2)
-      .to(canOneRef.current.position, { x: '+=0.5' }, 0.2)
+      .to(canOneRef.current.position, { x: '-=1', z: '-=6' }, 0)
       .to(canOneRef.current.rotation, { x: '+=0.5' }, 0.41);
   }, []);
 
