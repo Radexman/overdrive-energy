@@ -6,6 +6,7 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/all';
 import { Environment, View } from '@react-three/drei';
+import { useRouter } from 'next/navigation';
 
 import ProductsScene from './ProductsScene';
 import { Flavor } from '@/types/global';
@@ -19,8 +20,50 @@ type ProductProps = {
   isAlignedLeft?: boolean;
 };
 
+const flavorStyles: Record<
+  Flavor,
+  {
+    text: string;
+    border: string;
+    hoverBg: string;
+    hoverText: string;
+    gradientFrom: string;
+    gradientTo: string;
+  }
+> = {
+  'orange-burst': {
+    text: 'text-orange-burst',
+    border: 'border-orange-burst',
+    hoverBg: 'hover:bg-orange-burst',
+    hoverText: 'hover:text-black',
+    gradientFrom: '#0b0d10',
+    gradientTo: '#ae4512',
+  },
+  'berry-frost': {
+    text: 'text-berry-frost',
+    border: 'border-berry-frost',
+    hoverBg: 'hover:bg-berry-frost',
+    hoverText: 'hover:text-black',
+    gradientFrom: '#0b0d10',
+    gradientTo: '#052a4a',
+  },
+  'lemon-lime': {
+    text: 'text-lemon-lime',
+    border: 'border-lemon-lime',
+    hoverBg: 'hover:bg-lemon-lime',
+    hoverText: 'hover:text-black',
+    gradientFrom: '#0b0d10',
+    gradientTo: '#019707',
+  },
+};
+
 const Product = ({ title, subtext, textureName, isAlignedLeft }: ProductProps) => {
-  const sectionRef = useRef<HTMLElement | null>(null);
+  const sectionRef = useRef<HTMLElement>(null!);
+  const router = useRouter();
+
+  const handleClick = (slug: string) => {
+    router.push(`/cans/${slug}`);
+  };
 
   useGSAP(
     () => {
@@ -40,16 +83,21 @@ const Product = ({ title, subtext, textureName, isAlignedLeft }: ProductProps) =
         },
       });
 
-      scrollTl.from('.title', {
-        scale: 1.3,
-        opacity: 0,
-        y: 20,
-      });
-      scrollTl.from('.subtext', {
-        scale: 1.1,
-        opacity: 0,
-        y: 10,
-      });
+      scrollTl
+        .from('.title', {
+          scale: 1.3,
+          y: 20,
+          duration: 1.2,
+        })
+        .from(
+          '.subtext',
+          {
+            scale: 1.1,
+            y: 12,
+            duration: 1,
+          },
+          '-=0.6'
+        );
     },
     { scope: sectionRef }
   );
@@ -73,9 +121,34 @@ const Product = ({ title, subtext, textureName, isAlignedLeft }: ProductProps) =
           isAlignedLeft && '-ml-70'
         )}
       >
-        <div className="ml-70 flex h-[70vh] max-w-lg flex-col justify-center">
-          <h3 className={`title font-bebas-neue text-5xl text-${textureName}`}>{title}</h3>
-          <p className="subtext font-merriweather-sans text-xl">{subtext}</p>
+        <div className="ml-70 flex h-[70vh] max-w-xl flex-col justify-center">
+          <h3 className={clsx('title font-bebas-neue text-7xl', flavorStyles[textureName].text)}>
+            {title}
+          </h3>
+          <p className="subtext font-merriweather-sans text-2xl">{subtext}</p>
+          <button
+            onClick={() => handleClick(textureName)}
+            className={clsx(
+              'group mt-8 inline-flex w-fit cursor-pointer items-center gap-2 rounded-full border px-8 py-3',
+              'font-bebas-neue text-lg tracking-wide uppercase',
+              'transition-all duration-300 ease-out',
+              'hover:-translate-y-0.5 hover:shadow-lg',
+              flavorStyles[textureName].border,
+              flavorStyles[textureName].hoverBg,
+              flavorStyles[textureName].hoverText,
+              flavorStyles[textureName].text
+            )}
+          >
+            Explore flavor
+            <span
+              className={clsx(
+                'mb-1 text-2xl transition-transform duration-300 ease-out',
+                'group-hover:translate-x-1'
+              )}
+            >
+              →
+            </span>
+          </button>
         </div>
       </div>
     </section>

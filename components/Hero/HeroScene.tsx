@@ -54,8 +54,7 @@ const HeroScene = () => {
 
       .to(canOneRef.current.rotation, { x: Math.PI * 2.5 }, 0.2)
       .to(canTwoRef.current.position, { y: '+=2' }, 0.2)
-      .to(canOneRef.current.position, { x: '-=1', z: '-=6' }, 0)
-      .to(canOneRef.current.rotation, { x: '+=0.5' }, 0.41);
+      .to(canOneRef.current.position, { x: '-=1', z: '-=6' }, 0);
   }, []);
 
   return (
