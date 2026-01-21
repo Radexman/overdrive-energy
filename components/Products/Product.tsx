@@ -43,7 +43,6 @@ const Product = ({ title, subtext, textureName, isAlignedLeft }: ProductProps) =
           start: 'top center',
           end: 'bottom bottom',
           scrub: 1,
-          markers: true,
         },
       });
 

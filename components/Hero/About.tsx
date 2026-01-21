@@ -49,7 +49,7 @@ const About = () => {
 
   return (
     <div className="about text-text-primary grid min-h-screen place-items-center">
-      <div className="absolute mb-14 min-w-7xl">
+      <div className="absolute mt-20 min-w-7xl">
         <h2 className="heading-one font-bebas-neue text-5xl">Keep high</h2>
         <h2 className="heading-two font-bebas-neue text-brand text-9xl">performance</h2>
         <div className="paragraph-body">
