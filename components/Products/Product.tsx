@@ -9,6 +9,7 @@ import { Environment, View } from '@react-three/drei';
 import { useRouter } from 'next/navigation';
 
 import ProductsScene from './ProductsScene';
+import { flavorStyles } from '@/lib/flavors';
 import { Flavor } from '@/types/global';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -18,43 +19,6 @@ type ProductProps = {
   subtext: string;
   textureName: Flavor;
   isAlignedLeft?: boolean;
-};
-
-const flavorStyles: Record<
-  Flavor,
-  {
-    text: string;
-    border: string;
-    hoverBg: string;
-    hoverText: string;
-    gradientFrom: string;
-    gradientTo: string;
-  }
-> = {
-  'orange-burst': {
-    text: 'text-orange-burst',
-    border: 'border-orange-burst',
-    hoverBg: 'hover:bg-orange-burst',
-    hoverText: 'hover:text-black',
-    gradientFrom: '#0b0d10',
-    gradientTo: '#ae4512',
-  },
-  'berry-frost': {
-    text: 'text-berry-frost',
-    border: 'border-berry-frost',
-    hoverBg: 'hover:bg-berry-frost',
-    hoverText: 'hover:text-black',
-    gradientFrom: '#0b0d10',
-    gradientTo: '#052a4a',
-  },
-  'lemon-lime': {
-    text: 'text-lemon-lime',
-    border: 'border-lemon-lime',
-    hoverBg: 'hover:bg-lemon-lime',
-    hoverText: 'hover:text-black',
-    gradientFrom: '#0b0d10',
-    gradientTo: '#019707',
-  },
 };
 
 const Product = ({ title, subtext, textureName, isAlignedLeft }: ProductProps) => {
@@ -114,7 +78,6 @@ const Product = ({ title, subtext, textureName, isAlignedLeft }: ProductProps) =
         <Environment preset="studio" />
         <ambientLight intensity={0.5} />
       </View>
-
       <div
         className={clsx(
           'text-text-primary absolute inset-0 grid place-items-center',
