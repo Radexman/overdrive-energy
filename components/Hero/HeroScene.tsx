@@ -2,9 +2,9 @@
 
 import * as THREE from 'three';
 import gsap from 'gsap';
-import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/all';
+import { useRef } from 'react';
 
 import Can from '../Can';
 
