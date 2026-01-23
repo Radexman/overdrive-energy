@@ -61,6 +61,8 @@ const Product = ({ title, subtext, textureName, isAlignedLeft }: ProductProps) =
           },
           '-=0.6'
         );
+
+      gsap.to('.arrow', { x: 5, duration: 0.8, yoyo: true, repeat: -1, ease: 'power1.inOut' });
     },
     { scope: sectionRef }
   );
@@ -104,7 +106,7 @@ const Product = ({ title, subtext, textureName, isAlignedLeft }: ProductProps) =
             Explore flavor
             <span
               className={clsx(
-                'mb-1 text-2xl transition-transform duration-300 ease-out',
+                'arrow mb-1 pl-4 text-2xl transition-transform duration-300 ease-out',
                 'group-hover:translate-x-1'
               )}
             >

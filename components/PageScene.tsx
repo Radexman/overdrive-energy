@@ -23,7 +23,7 @@ const PageScene = ({ flavorType }: PageSceneProps) => {
     gsap.set(canRef.current.position, { y: -8 });
 
     gsap
-      .timeline({ defaults: { duration: 0.8, delay: 0.2, ease: 'back.out(1.5)' } })
+      .timeline({ defaults: { duration: 0.8, delay: 1, ease: 'back.out(1.5)' } })
       .to(canRef.current.position, { y: 0 });
   }, []);
 

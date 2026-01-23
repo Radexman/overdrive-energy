@@ -12,7 +12,7 @@ import PageScene from '@/components/PageScene';
 import { Flavor } from '@/types/global';
 import { flavorsConfig, flavorStyles } from '@/lib/flavors';
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+gsap.registerPlugin(useGSAP);
 
 const page = () => {
   const router = useRouter();
@@ -22,6 +22,20 @@ const page = () => {
   if (!flavorType) return notFound();
 
   const flavor = flavorsConfig[flavorType];
+
+  useGSAP(() => {
+    const introTl = gsap.timeline({ defaults: { delay: 0.2, opacity: 0, ease: 'power2.in' } });
+
+    introTl
+      .from('.title', { scale: 2, y: 40 })
+      .from('.tagline', { y: 20 })
+      .from('.description', { y: 20 }, '<')
+      .from('.highlight-title', { scale: 2, y: 40 })
+      .from('.highlight-text', { y: 20 }, '<')
+      .from('.back-button', { scale: 2, y: 20 }, '<');
+
+    gsap.to('.arrow', { x: 5, duration: 0.8, yoyo: true, repeat: -1, ease: 'power1.inOut' });
+  }, []);
 
   const handleClick = () => {
     router.push('/');
@@ -37,24 +51,24 @@ const page = () => {
       <div className="absolute inset-0 z-20 pt-35">
         <div className="flex items-center justify-start pl-24">
           <div className="max-w-xl" style={{ color: flavor.accentColor }}>
-            <h1 className="font-bebas-neue text-8xl leading-none">{flavor.title}</h1>
-            <h2 className="font-bebas-neue text-3xl tracking-wide text-white/80">
+            <h1 className="title font-bebas-neue text-8xl leading-none">{flavor.title}</h1>
+            <h2 className="tagline font-bebas-neue text-3xl tracking-wide text-white/80">
               {flavor.tagline}
             </h2>
-            <p className="font-merriweather-sans mt-4 text-lg leading-relaxed text-white">
+            <p className="description font-merriweather-sans mt-4 text-lg leading-relaxed text-white">
               {flavor.description}
             </p>
           </div>
         </div>
         <div className="flex items-center justify-end pt-30 pr-24">
           <div className="max-w-xl" style={{ color: flavor.accentColor }}>
-            <h2 className="font-bebas-neue text-4xl">{flavor.highlightTitle}</h2>
-            <p className="font-merriweather-sans text-lg leading-relaxed text-white">
+            <h2 className="highlight-title font-bebas-neue text-4xl">{flavor.highlightTitle}</h2>
+            <p className="highlight-text font-merriweather-sans text-lg leading-relaxed text-white">
               {flavor.highlightText}
             </p>
           </div>
         </div>
-        <div className="flex items-center justify-start pt-40 pl-24">
+        <div className="back-button flex items-center justify-start pt-40 pl-24">
           <button
             onClick={handleClick}
             className={clsx(
@@ -70,7 +84,7 @@ const page = () => {
           >
             <span
               className={clsx(
-                'mt-1 text-2xl transition-transform duration-300 ease-out',
+                'arrow mt-1 pr-4 text-2xl transition-transform duration-300 ease-out',
                 'group-hover:translate-x-1'
               )}
             >
