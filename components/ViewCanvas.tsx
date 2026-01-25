@@ -1,8 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { View } from '@react-three/drei';
+
+import LoadingScreen from './LoadingScreen';
 
 const ViewCanvas = () => {
   const [eventSource, setEventSource] = useState<HTMLElement | null>(null);
@@ -18,7 +20,9 @@ const ViewCanvas = () => {
       eventSource={eventSource ?? undefined}
       eventPrefix="client"
     >
-      <View.Port />
+      <Suspense fallback={<LoadingScreen />}>
+        <View.Port />
+      </Suspense>
     </Canvas>
   );
 };
