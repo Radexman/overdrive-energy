@@ -47,7 +47,7 @@ const Hero = () => {
           <p className="text-brand hero-heading text-6xl">Overdrive</p>
           <p className="hero-subheading text-2xl">Energy Drink</p>
         </header>
-        <h1 className="text-brand text-center text-[150px] font-bold tracking-wider">
+        <h1 className="text-brand text-center text-[150px] tracking-wider">
           <TextSplitter
             text="Push Beyond"
             wordDisplayStyle="inline-block"
