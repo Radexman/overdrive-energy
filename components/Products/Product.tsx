@@ -31,38 +31,13 @@ const Product = ({ title, subtext, textureName, isAlignedLeft }: ProductProps) =
 
   useGSAP(
     () => {
-      if (!sectionRef.current) return;
-
-      const scrollTl = gsap.timeline({
-        defaults: {
-          opacity: 0,
-          ease: 'back.out(2)',
-        },
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top center',
-          end: 'bottom bottom',
-          scrub: 1,
-        },
+      gsap.to('.arrow', {
+        x: 5,
+        duration: 0.8,
+        yoyo: true,
+        repeat: -1,
+        ease: 'power1.inOut',
       });
-
-      scrollTl
-        .from('.title', {
-          scale: 1.3,
-          y: 20,
-          duration: 1.2,
-        })
-        .from(
-          '.subtext',
-          {
-            scale: 1.1,
-            y: 12,
-            duration: 1,
-          },
-          '-=0.6'
-        );
-
-      gsap.to('.arrow', { x: 5, duration: 0.8, yoyo: true, repeat: -1, ease: 'power1.inOut' });
     },
     { scope: sectionRef }
   );
@@ -90,29 +65,31 @@ const Product = ({ title, subtext, textureName, isAlignedLeft }: ProductProps) =
             {title}
           </h3>
           <p className="subtext font-merriweather-sans text-2xl">{subtext}</p>
-          <button
-            onClick={() => handleClick(textureName)}
-            className={clsx(
-              'group mt-8 inline-flex w-fit cursor-pointer items-center gap-2 rounded-full border px-8 py-3',
-              'font-bebas-neue text-lg tracking-wide uppercase',
-              'transition-all duration-300 ease-out',
-              'hover:-translate-y-0.5 hover:shadow-lg',
-              flavorStyles[textureName].border,
-              flavorStyles[textureName].hoverBg,
-              flavorStyles[textureName].hoverText,
-              flavorStyles[textureName].text
-            )}
-          >
-            Explore flavor
-            <span
+          <div className="product-button">
+            <button
+              onClick={() => handleClick(textureName)}
               className={clsx(
-                'arrow mb-1 pl-4 text-2xl transition-transform duration-300 ease-out',
-                'group-hover:translate-x-1'
+                'group mt-8 inline-flex w-fit cursor-pointer items-center gap-2 rounded-full border px-8 py-3',
+                'font-bebas-neue text-lg tracking-wide uppercase',
+                'transition-all duration-300 ease-out',
+                'hover:-translate-y-0.5 hover:shadow-lg',
+                flavorStyles[textureName].border,
+                flavorStyles[textureName].hoverBg,
+                flavorStyles[textureName].hoverText,
+                flavorStyles[textureName].text
               )}
             >
-              →
-            </span>
-          </button>
+              Explore flavor
+              <span
+                className={clsx(
+                  'arrow mb-1 pl-4 text-2xl transition-transform duration-300 ease-out',
+                  'group-hover:translate-x-1'
+                )}
+              >
+                →
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
