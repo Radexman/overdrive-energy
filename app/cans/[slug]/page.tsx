@@ -82,7 +82,12 @@ const page = () => {
             </p>
           </div>
         </div>
-        <div className="back-button flex items-center justify-start pt-20 pl-24">
+        <div
+          className={clsx(
+            'back-button flex items-center justify-start pl-24',
+            isUltraTall ? 'pt-100' : 'pt-20'
+          )}
+        >
           <button
             onClick={handleClick}
             className={clsx(
