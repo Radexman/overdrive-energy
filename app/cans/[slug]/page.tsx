@@ -3,7 +3,7 @@
 import clsx from 'clsx';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/all';
+import { useEffect, useState } from 'react';
 import { notFound, useParams, useRouter } from 'next/navigation';
 import { Environment, View } from '@react-three/drei';
 
@@ -15,6 +15,7 @@ import { flavorsConfig, flavorStyles } from '@/lib/flavors';
 gsap.registerPlugin(useGSAP);
 
 const page = () => {
+  const [isUltraTall, setIsUltraTall] = useState(false);
   const router = useRouter();
   const params = useParams();
   const flavorType = params?.slug as Flavor;
@@ -22,6 +23,19 @@ const page = () => {
   if (!flavorType) return notFound();
 
   const flavor = flavorsConfig[flavorType];
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const checkHeight = () => {
+      setIsUltraTall(window.innerHeight >= 1200);
+    };
+
+    checkHeight();
+    window.addEventListener('resize', checkHeight);
+
+    return () => window.removeEventListener('resize', checkHeight);
+  }, []);
 
   useGSAP(() => {
     const introTl = gsap.timeline({ defaults: { delay: 0.2, opacity: 0, ease: 'power2.in' } });
@@ -48,7 +62,7 @@ const page = () => {
         <Environment preset="studio" />
         <ambientLight intensity={0.5} />
       </View>
-      <div className="absolute inset-0 z-20 pt-5">
+      <div className={clsx('absolute inset-0 z-20', isUltraTall ? 'pt-30' : 'pt-5')}>
         <div className="flex items-center justify-start pl-24">
           <div className="max-w-xl" style={{ color: flavor.accentColor }}>
             <h1 className="title font-bebas-neue text-8xl leading-none">{flavor.title}</h1>
@@ -68,7 +82,7 @@ const page = () => {
             </p>
           </div>
         </div>
-        <div className="back-button flex items-center justify-start pt-40 pl-24">
+        <div className="back-button flex items-center justify-start pt-20 pl-24">
           <button
             onClick={handleClick}
             className={clsx(

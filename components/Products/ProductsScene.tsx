@@ -30,7 +30,7 @@ const ProductsScene = ({
     if (!canRef.current || !triggerRef.current) return;
 
     const startX = isAlignedLeft ? -12 : 12;
-    const endX = isAlignedLeft ? 3 : -3;
+    const endX = isAlignedLeft ? 4 : -4;
 
     gsap.set(canRef.current.position, { x: startX, y: finalPosition[1], z: finalPosition[2] });
 
