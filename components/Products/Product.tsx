@@ -31,13 +31,38 @@ const Product = ({ title, subtext, textureName, isAlignedLeft }: ProductProps) =
 
   useGSAP(
     () => {
-      gsap.to('.arrow', {
-        x: 5,
-        duration: 0.8,
-        yoyo: true,
-        repeat: -1,
-        ease: 'power1.inOut',
+      if (!sectionRef.current) return;
+
+      const scrollTl = gsap.timeline({
+        defaults: {
+          opacity: 0,
+          ease: 'power1.inOut',
+        },
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top center',
+          end: 'bottom bottom',
+          scrub: 1,
+        },
       });
+
+      scrollTl
+        .from('.title', {
+          opacity: 1,
+          y: 20,
+          duration: 1.2,
+        })
+        .from(
+          '.subtext',
+          {
+            opacity: 1,
+            y: 12,
+            duration: 1,
+          },
+          '-=0.6'
+        );
+
+      gsap.to('.arrow', { x: 5, duration: 0.8, yoyo: true, repeat: -1, ease: 'power1.inOut' });
     },
     { scope: sectionRef }
   );
@@ -60,36 +85,36 @@ const Product = ({ title, subtext, textureName, isAlignedLeft }: ProductProps) =
           isAlignedLeft && '-ml-70'
         )}
       >
-        <div className="">
-          <h3 className={clsx('title font-bebas-neue text-7xl', flavorStyles[textureName].text)}>
+        <div className="ml-70 flex h-[70vh] max-w-xl flex-col justify-center">
+          <h3
+            className={clsx('title font-bebas-neue mb-2 text-7xl', flavorStyles[textureName].text)}
+          >
             {title}
           </h3>
           <p className="subtext font-merriweather-sans text-2xl">{subtext}</p>
-          <div className="product-button">
-            <button
-              onClick={() => handleClick(textureName)}
+          <button
+            onClick={() => handleClick(textureName)}
+            className={clsx(
+              'group mt-8 -ml-20 inline-flex w-fit cursor-pointer items-center gap-2 rounded-full border px-8 py-3',
+              'font-bebas-neue text-lg tracking-wide uppercase',
+              'transition-all duration-300 ease-out',
+              'hover:-translate-y-0.5 hover:shadow-lg',
+              flavorStyles[textureName].border,
+              flavorStyles[textureName].hoverBg,
+              flavorStyles[textureName].hoverText,
+              flavorStyles[textureName].text
+            )}
+          >
+            Explore flavor
+            <span
               className={clsx(
-                'group mt-8 inline-flex w-fit cursor-pointer items-center gap-2 rounded-full border px-8 py-3',
-                'font-bebas-neue text-lg tracking-wide uppercase',
-                'transition-all duration-300 ease-out',
-                'hover:-translate-y-0.5 hover:shadow-lg',
-                flavorStyles[textureName].border,
-                flavorStyles[textureName].hoverBg,
-                flavorStyles[textureName].hoverText,
-                flavorStyles[textureName].text
+                'arrow mb-1 pl-4 text-2xl transition-transform duration-300 ease-out',
+                'group-hover:translate-x-1'
               )}
             >
-              Explore flavor
-              <span
-                className={clsx(
-                  'arrow mb-1 pl-4 text-2xl transition-transform duration-300 ease-out',
-                  'group-hover:translate-x-1'
-                )}
-              >
-                →
-              </span>
-            </button>
-          </div>
+              →
+            </span>
+          </button>
         </div>
       </div>
     </section>

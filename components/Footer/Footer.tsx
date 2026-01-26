@@ -43,12 +43,11 @@ const Footer = () => {
         <ambientLight intensity={0.5} />
       </View>
       <div className="absolute flex h-screen flex-col justify-between">
-        <footer className="font-bebas-neue mt-4 flex flex-col items-center justify-center text-white">
-          <h3 className="title text-brand text-center text-8xl tracking-wider">Overdrive Energy</h3>
-          <p className="subtext text-2xl">Push beyond limits</p>
+        <footer className="font-bebas-neue flex flex-col items-center justify-center text-white">
+          <h3 className="title text-brand text-center text-7xl tracking-wider">Overdrive Energy</h3>
+          <p className="subtext text-xl">Push beyond limits</p>
         </footer>
         <div className="w-full pb-10 text-center text-white">
-          <div className="bg-brand h-px w-screen" />
           <p className="mt-10">
             Concept energy drink brand <br /> Designed, modeled and developed by
             <a
