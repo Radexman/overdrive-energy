@@ -49,14 +49,12 @@ const Product = ({ title, subtext, textureName, isAlignedLeft }: ProductProps) =
       scrollTl
         .from('.title', {
           opacity: 1,
-          y: 20,
           duration: 1.2,
         })
         .from(
           '.subtext',
           {
             opacity: 1,
-            y: 12,
             duration: 1,
           },
           '-=0.6'
