@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Bebas_Neue, Merriweather_Sans } from 'next/font/google';
-import { Loader } from '@react-three/drei';
 
 import './globals.css';
 import ViewCanvas from '@/components/ViewCanvas';
