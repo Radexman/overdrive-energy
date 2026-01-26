@@ -60,7 +60,7 @@ const Product = ({ title, subtext, textureName, isAlignedLeft }: ProductProps) =
           isAlignedLeft && '-ml-70'
         )}
       >
-        <div className="ml-70 flex h-[70vh] max-w-xl flex-col justify-center">
+        <div className="">
           <h3 className={clsx('title font-bebas-neue text-7xl', flavorStyles[textureName].text)}>
             {title}
           </h3>

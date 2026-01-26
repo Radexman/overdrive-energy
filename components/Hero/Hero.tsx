@@ -43,11 +43,11 @@ const Hero = () => {
         <ambientLight intensity={0.5} />
       </View>
       <div className="font-bebas-neue text-text-primary absolute inset-0 flex flex-col items-center justify-center">
-        <header className="absolute top-24 flex flex-col items-center justify-center tracking-wider">
+        <header className="absolute top-10 flex flex-col items-center justify-center tracking-wider">
           <p className="text-brand hero-heading text-6xl">Overdrive</p>
           <p className="hero-subheading text-2xl">Energy Drink</p>
         </header>
-        <h1 className="text-brand text-center text-[150px] tracking-wider">
+        <h1 className="text-brand text-center text-[130px] tracking-wider">
           <TextSplitter
             text="Push Beyond"
             wordDisplayStyle="inline-block"

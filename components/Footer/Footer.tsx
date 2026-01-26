@@ -43,7 +43,7 @@ const Footer = () => {
         <ambientLight intensity={0.5} />
       </View>
       <div className="absolute flex h-screen flex-col justify-between">
-        <footer className="font-bebas-neue mt-25 flex flex-col items-center justify-center text-white">
+        <footer className="font-bebas-neue mt-4 flex flex-col items-center justify-center text-white">
           <h3 className="title text-brand text-center text-8xl tracking-wider">Overdrive Energy</h3>
           <p className="subtext text-2xl">Push beyond limits</p>
         </footer>
