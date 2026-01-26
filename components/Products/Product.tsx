@@ -95,7 +95,7 @@ const Product = ({ title, subtext, textureName, isAlignedLeft }: ProductProps) =
           <button
             onClick={() => handleClick(textureName)}
             className={clsx(
-              'group mt-8 -ml-20 inline-flex w-fit cursor-pointer items-center gap-2 rounded-full border px-8 py-3',
+              'group mt-8 inline-flex w-fit cursor-pointer items-center gap-2 rounded-full border px-8 py-3',
               'font-bebas-neue text-lg tracking-wide uppercase',
               'transition-all duration-300 ease-out',
               'hover:-translate-y-0.5 hover:shadow-lg',
