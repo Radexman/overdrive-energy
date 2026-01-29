@@ -1,266 +1,77 @@
-🎨 OVERDRIVE – THEME & ART DIRECTION
-1️⃣ Główny vibe marki
+# Overdrive Energy ⚡
 
-Energy · Performance · Focus · Motion
+**3D Product Showcase – Desktop Experience**
 
-nie „party drink”
+![Overdrive Energy – 3D Product Showcase](public/showcase.png)
 
-bardziej performance / overclock / flow
+👉 **Live demo:** https://overdrive-energy.netlify.app/
 
-nowoczesny, lekko agresywny, ale clean
+Overdrive Energy is an experimental **3D product showcase** built as a **desktop-only web experience**.  
+The project combines **modern frontend technologies**, **scroll-driven animations**, and **real-time 3D rendering** to present a product in an immersive and interactive way.
 
-Wyobraź sobie:
+The website was intentionally designed **for desktop devices only**. Layout, animations, and interactions are optimized for larger screens and stronger hardware to preserve performance, visual quality, and the intended user experience.
 
-Tesla Plaid × gaming × esport × high-performance UI
+---
 
-2️⃣ Kolory (core + flavor accents)
-🖤 Base colors (cała strona)
-Background: #0B0D10 (almost black, lekko niebieski)
-Surface: #141821
-Text primary: #FFFFFF
-Text muted: #B6BCCB
-Divider: #242A38
+## ✨ Features
 
-Nie używaj czystej czerni — ciemny navy wygląda drożej.
+- 🧊 **Real-time interactive 3D models**
+- 🎥 **Scroll-driven animations** synced with user interaction
+- 🌀 **Smooth transitions and micro-interactions** powered by GSAP
+- 🖥️ **Desktop-only experience** (intentional UX decision)
+- 🎨 **Modern UI styling** using Tailwind CSS
+- ⚡ High performance despite WebGL usage
 
-🎯 Accent – brand (OVERDRIVE)
-Primary accent: #FFB000 (energy yellow / amber)
-Glow accent: #FFCC33
+---
 
-Używany:
+## 🧠 Tech Stack
 
-CTA
+This project is built using a modern frontend stack:
 
-underline
+### Core
 
-hover
+- **Next.js 16** – App Router, client components
+- **React 19**
+- **TypeScript** – full type safety across the app
 
-detale UI
+### 3D & Graphics
 
-🍊 Flavor accents
+- **Three.js** – core 3D engine
+- **@react-three/fiber** – React renderer for Three.js
+- **@react-three/drei** – helpers for 3D scenes (Environment, View, etc.)
 
-Każdy smak = 1 kolor + 1 subtle gradient
+### Animations
 
-Orange Burst
+- **GSAP** – advanced animation library
+- **ScrollTrigger** – scroll-based animation control
 
-#FF8C1A → #FFB347
+### Styling
 
-Berry Frost
+- **Tailwind CSS v4**
+- **clsx** – conditional class handling
+- **Prettier + Tailwind plugin** – consistent code formatting
 
-#5F7CFF → #9B7BFF
+### Tooling & Deployment
 
-Lemon Lime
+- **ESLint**
+- **Prettier**
+- **Netlify** – hosting and deployment
 
-#A6FF00 → #E4FF6A
+---
 
-⚠️ Te kolory nie dominują strony głównej – tylko:
+## 🧩 Architecture & Approach
 
-karty produktów
+- **3D canvas rendered only on desktop** (media queries + runtime checks)
+- **Separate 3D scenes** for landing page and product pages
+- **Scroll-controlled animations** instead of time-based timelines
+- Conscious decision to **exclude mobile** for better UX and performance
+- Minimal dependencies, focus on the core experience
 
-tła podstron
+---
 
-hover states
+## 🚀 Local Development
 
-3️⃣ Background – jak NIE zrobić nudy
-❌ Nie:
-
-flat dark background bez tekstury
-
-random gradient
-
-zdjęcie stockowe
-
-✅ Tak (polecam):
-
-Dark base + subtle motion / noise / light streaks
-
-Opcje:
-
-Subtle noise texture (2–4%)
-
-Radial glow za puszką
-
-Diagonal motion lines (low opacity)
-
-CSS gradients + blur
-
-Przykład mentalny:
-
-Ciemne tło, za puszką miękki glow w kolorze smaku
-
-4️⃣ STRUKTURA STRONY (Home)
-🟡 HERO SECTION
-
-Cel: instant impact
-
-Layout:
-
-center: puszka (3D / mock)
-
-background: dark + glow
-
-tekst krótki, mocny
-
-Content:
-
-OVERDRIVE
-ENERGY DRINK
-
-Push Beyond Limits
-Engineered for focus and performance.
-
-CTA:
-
-Explore Flavors
-
-View Product
-
-🟠 FLAVORS SECTION (key section)
-
-3 karty / 3 puszki
-
-Każda karta:
-
-puszka
-
-nazwa
-
-1-liner
-
-link do podstrony
-
-Copy:
-
-Orange Burst
-
-Bold citrus energy with an explosive orange kick.
-
-Berry Frost
-
-Icy berry blend with a smooth, refreshing finish.
-
-Lemon Lime
-
-Sharp citrus freshness with a clean, crisp taste.
-
-Hover:
-
-glow w kolorze smaku
-
-delikatne scale
-
-🔵 PERFORMANCE SECTION
-
-(To buduje „serious energy”)
-
-Headline:
-
-Engineered for Performance
-
-3 filary (ikony):
-
-⚡ Energy Boost
-
-🧠 Focus & Clarity
-
-🔋 Endurance Support
-
-Copy (krótkie):
-
-Powered by caffeine, taurine and B-vitamins
-to help you stay sharp when it matters most.
-
-🟣 INGREDIENTS / FORMULA SECTION
-
-Minimal, tech vibe.
-
-Headline:
-
-What’s Inside Overdrive
-
-Cards:
-
-Caffeine
-
-Taurine
-
-B-Vitamins
-
-Copy:
-
-Carefully balanced formula designed
-for everyday performance.
-
-⚫ BRAND STATEMENT
-
-(krótki, premium moment)
-
-OVERDRIVE is not about excess.
-It’s about control, focus and momentum.
-
-🟢 CTA SECTION
-
-Proste, kontrastowe.
-
-Choose Your Flavor
-
-Buttons:
-
-Orange Burst
-
-Berry Frost
-
-Lemon Lime
-
-5️⃣ PODSTRONA PRODUKTU (Flavor page)
-
-Każdy smak ma swój kolor & background glow.
-
-Layout:
-
-Hero (puszka + flavor color)
-
-Flavor description
-
-Taste profile
-
-Nutrition & ingredients
-
-Microcopy (warnings etc.)
-
-Example: Orange Burst page
-
-Hero copy:
-
-ORANGE BURST
-Explosive citrus energy
-
-Taste profile:
-
-Sweet: ●●●○○
-
-Citrus: ●●●●○
-
-Fresh: ●●○○○
-
-Flavor Mark:
-
-Natural orange taste with a bold citrus kick.
-
-6️⃣ UI DETAILS (mega ważne)
-
-Rounded corners: 12–16px
-
-Soft shadows (nie twarde)
-
-Hover = glow + slight scale
-
-Separator = thin line / gradient
-
-7️⃣ Motion (jeśli chcesz wow)
-
-Hero glow pulsuje very slowly
-
-Puszki: subtle float
-
-Section reveal: fade + translateY
+```bash
+npm install
+npm run dev
+```
